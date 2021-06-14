@@ -1,5 +1,7 @@
 pragma solidity >=0.6.0 <0.8.0;
 
+// SPDX-License-Identifier: The MIT License
+
 /**
 @title ILendingPoolAddressesProvider interface
 @notice provides the interface to fetch the LendingPoolCore address
