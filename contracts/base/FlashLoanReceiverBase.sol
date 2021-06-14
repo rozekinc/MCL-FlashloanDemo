@@ -36,6 +36,9 @@ contract FlashLoanReceiverBase is IFlashLoanReceiver {
         if (_reserve == BNB_ADDRESS) {
             //solium-disable-next-line
             _destination.call.value(_amount).gas(50000)("");
+            (bool sent, bytes memory data) =
+                _destination.call.value(_amount).gas(50000)("");
+            require(sent, "Unable to transferInternal");
             return;
         }
         IERC20(_reserve).safeTransfer(_destination, _amount);
