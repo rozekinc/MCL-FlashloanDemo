@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity >=0.6.0 <0.8.0;
 
 /**
 @title ILendingPoolAddressesProvider interface
@@ -24,7 +24,8 @@ contract ILendingPoolAddressesProvider {
 
     function getLendingPoolParametersProvider() public view returns (address);
 
-    function setLendingPoolParametersProvider(address _parametersProvider) public;
+    function setLendingPoolParametersProvider(address _parametersProvider)
+        public;
 
     function getFeeProvider() public view returns (address);
 
@@ -61,10 +62,8 @@ contract ILendingPoolAddressesProvider {
     function getSafetyRewardVault() public view returns (address);
 
     function setSafetyRewardVault(address _address) public;
-    
+
     function getStakingToken() public view returns (address);
 
     function setStakingToken(address _address) public;
-        
-        
 }

@@ -1,8 +1,8 @@
-pragma solidity ^0.5.0;
+pragma solidity >=0.6.0 <0.8.0;
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v2.4.0/contracts/math/SafeMath.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v2.4.0/contracts/token/ERC20/IERC20.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v2.4.0/contracts/token/ERC20/SafeERC20.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v3.3/contracts/math/SafeMath.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v3.3/contracts/token/ERC20/IERC20.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v3.3/contracts/token/ERC20/SafeERC20.sol";
 import "../interfaces/IFlashLoanReceiver.sol";
 import "../interfaces/ILendingPoolAddressesProvider.sol";
 
@@ -11,8 +11,9 @@ contract FlashLoanReceiverBase is IFlashLoanReceiver {
     using SafeMath for uint256;
 
     ILendingPoolAddressesProvider public addressesProvider;
-    
-    address public constant BNB_ADDRESS = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
+
+    address public constant BNB_ADDRESS =
+        0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
 
     constructor(ILendingPoolAddressesProvider _provider) public {
         addressesProvider = _provider;
@@ -39,7 +40,7 @@ contract FlashLoanReceiverBase is IFlashLoanReceiver {
         }
         IERC20(_reserve).safeTransfer(_destination, _amount);
     }
-    
+
     function getBalanceInternal(address _target, address _reserve)
         internal
         view
